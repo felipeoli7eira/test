@@ -20,10 +20,11 @@ Route::prefix('app')->name('app.')->group(function()
 
 
 
-     /** category routes section */
-    Route::get('/categoria', [Category::class, 'list'])->name('category.list');
-    Route::post('/categoria', [Category::class, 'store'])->name('category.store');
-    Route::put('/categoria', [Category::class, 'update'])->name('category.update');
+    /** category routes section */
+    Route::get('/categoria',         [Category::class, 'list'])  ->name('category.list');
+    Route::post('/categoria',        [Category::class, 'store']) ->name('category.store');
+    Route::put('/categoria',         [Category::class, 'update'])->name('category.update');
+    Route::delete('/categoria/{id}', [Category::class, 'delete'])->name('category.delete');
 
 
 

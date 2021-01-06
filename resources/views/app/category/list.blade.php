@@ -18,34 +18,46 @@
             @endforeach
         @endif
 
-        <form id="create-form" v-bind:action="action" method="post" class="row text-end d-flex justify-content-end mb-5">
+        <form v-bind:action="action" method="post" class="row d-flex justify-content-end mb-5">
 
             @csrf
 
             <input type="hidden" name="category_id" v-bind:value="category.id">
 
-            <div class="col col-6">
+            <div class="col col-8">
+
                 <div class="row">
-                    <div class="col p-0">
-                        <input type="text" name="name" class="form-control w-100" v-bind:value="category.name" placeholder="Nova categoria">
+                    <div class="col col-10 p-0">
+                        <input type="text" name="name" class="form-control" v-bind:value="category.name" placeholder="Nova categoria">
                     </div>
-                    <div class="col text-start">
-                        <button type="submit" class="btn btn-primary fw-600 ml-1">cadastrar</button>
+
+                    <div class="col col-2">
+                        <button type="submit" class="btn btn-primary fw-600">cadastrar</button>
                     </div>
                 </div>
+
             </div>
 
         </form>
 
         @if (count($categories))
+
             @foreach ($categories as $category)
-                <p class="note note-light small rounded-0 fw-500 m-0 mb-2">
-                    {{ $category->name }} <span class="badge fw-400 rounded-1 bg-secondary">{{ $category->slug }}</span>
+                <div class="note note-light small rounded-0 fw-500 m-0 mb-2">
+                    {{ $category->name }}
+                    <span class="badge fw-400 rounded-1 bg-secondary">{{ $category->slug }}</span>
+
                     <br>
-                    <button v-on:click="update({{ $category }})" type="button" class="btn btn-sm btn-dark fw-600 my-3">atualizar</button>
-                    <button type="button" class="btn btn-sm btn-danger fw-600 my-3">deletar</button>
-                </p>
+
+                    <button type="button" v-on:click="update({{ $category }})" type="button" class="btn btn-sm btn-dark fw-600 my-3">atualizar</button>
+                    <form class="d-inline" action="{{ route('app.category.delete', ['id' => $category->id]) }}" method="post">
+                        @csrf
+                        @method('delete')
+                        <button type="submit" class="btn btn-sm btn-danger fw-600 my-3">deletar</button>
+                    </form>
+                </div>
             @endforeach
+
         @else
             <p class="note note-primary small rounded-1 fw-500">Nenhuma categoria para listar</p>
         @endif
@@ -83,6 +95,5 @@
                 }
             }
         )
-    
     </script>
 @endsection

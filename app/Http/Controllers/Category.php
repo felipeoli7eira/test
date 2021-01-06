@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\DB;
 
 use App\Models\Category as CategoryModel;
 
@@ -19,6 +20,16 @@ class Category extends Controller
 
     public function store(Request $request)
     {
+        $exists = CategoryModel::withTrashed()->where('name', $request->input('name'))->get();
+
+        if(count($exists))
+        {
+            CategoryModel::withTrashed()
+            ->where('name', $request->input('name'))
+            ->restore();
+            return Redirect::route('app.category.list')->with('success', 'Cadastro restaurada');
+        }
+
         $request->validate(
             [
                 'name' => ['required', 'unique:categories']
@@ -57,6 +68,17 @@ class Category extends Controller
         );
 
         $category->save();
+
+        return Redirect::route('app.category.list');
+    }
+
+    public function delete(Request $request)
+    {
+        $category = CategoryModel::findOrFail(
+            $request->id
+        );
+
+        $category->delete();
 
         return Redirect::route('app.category.list');
     }
