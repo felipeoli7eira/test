@@ -7,6 +7,7 @@ use App\Http\Controllers\App;
 
 use App\Http\Controllers\Category;
 use App\Http\Controllers\Product;
+use App\Http\Controllers\User;
 
 /* login view */
 Route::get('/', [Web::class, 'index'])->name('web.index');
@@ -30,4 +31,11 @@ Route::prefix('app')->name('app.')->group(function()
     Route::get('/produto', [Product::class, 'list'])->name('product.list');
     Route::get('/produto/cadastro', [Product::class, 'create'])->name('product.create');
     Route::post('/produto', [Product::class, 'store'])->name('product.store');
+
+
+
+
+    Route::get('/usuario', [User::class, 'list'])->name('user.list');
+    Route::get('/usuario/cadastro', [User::class, 'create'])->name('user.create');
+    Route::post('/usuario', [User::class, 'store'])->name('user.store');
 });

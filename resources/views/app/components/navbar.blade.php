@@ -19,7 +19,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('app.product.list') }}">usuários</a>
+                    <a class="nav-link" href="{{ route('app.user.list') }}">usuário</a>
                 </li>
             </ul>
         </div>
