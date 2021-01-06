@@ -45,3 +45,5 @@ Route::prefix('app')->name('app.')->group(function()
     Route::delete('/usuario/{id}',  [User::class, 'delete']) ->name('user.delete');
     Route::put('/usuario/{id}',     [User::class, 'update']) ->name('user.update');
 });
+
+Route::post('/auth/log', [App::class, 'login'])->name('auth.login');
