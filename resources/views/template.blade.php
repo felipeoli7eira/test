@@ -29,6 +29,7 @@
         </main>
 
         <script src="{{ asset('mdb-ui-kit/js/mdb.min.js') }}"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
         @hasSection ('js')
             @yield('js')
         @endif
