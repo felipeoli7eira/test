@@ -30,14 +30,16 @@ Route::prefix('app')->name('app.')->group(function()
 
 
     /** product routes section */
-    Route::get('/produto', [Product::class, 'list'])->name('product.list');
+    Route::get('/produto',          [Product::class, 'list'])  ->name('product.list');
     Route::get('/produto/cadastro', [Product::class, 'create'])->name('product.create');
-    Route::post('/produto', [Product::class, 'store'])->name('product.store');
+    Route::post('/produto',         [Product::class, 'store']) ->name('product.store');
 
 
 
 
-    Route::get('/usuario', [User::class, 'list'])->name('user.list');
+    Route::get('/usuario',          [User::class, 'list'])  ->name('user.list');
     Route::get('/usuario/cadastro', [User::class, 'create'])->name('user.create');
-    Route::post('/usuario', [User::class, 'store'])->name('user.store');
+    Route::post('/usuario',         [User::class, 'store']) ->name('user.store');
+    Route::delete('/usuario/{id}',  [User::class, 'delete']) ->name('user.delete');
+    Route::put('/usuario/{id}',     [User::class, 'update']) ->name('user.update');
 });

@@ -33,4 +33,27 @@ class User extends Controller
 
         return Redirect::route('app.user.list');
     }
+
+    public function delete(Request $request)
+    {
+        $user = UserModel::find($request->id);
+
+        $user->delete();
+        return Redirect::route('app.user.list');
+    }
+
+    public function update(Request $request)
+    {
+        $user = UserModel::find($request->input('user_id'));
+
+        $user->first_name = $request->input('first_name');
+        $user->last_name  = $request->input('last_name');
+        $user->email      = $request->input('email');
+        $user->password   = Hash::make( $request->input('password') );
+        $user->level      = $request->input('level');
+
+        $user->save();
+
+        return Redirect::route('app.user.list');
+    }
 }
