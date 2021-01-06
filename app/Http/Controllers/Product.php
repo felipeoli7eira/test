@@ -63,7 +63,6 @@ class Product extends Controller
     {
         $product = ProductModel::findOrFail($request->input('product_id'));
 
-        $product->category_id = $request->input('category_id');
         $product->title       = $request->input('title');
         $product->description = $request->input('description');
         $product->price       = $request->input('price');

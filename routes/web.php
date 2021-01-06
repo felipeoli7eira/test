@@ -34,14 +34,14 @@ Route::prefix('app')->name('app.')->group(function()
     Route::get('/produto/cadastro', [Product::class, 'create']) ->name('product.create');
     Route::post('/produto',         [Product::class, 'store'])  ->name('product.store');
     Route::delete('/produto/{id}',  [Product::class, 'delete']) ->name('product.delete');
-    Route::put('/produto',          [Product::class, 'update']) ->name('product.update');
+    Route::put('/produto/update',          [Product::class, 'update']) ->name('product.update');
 
 
 
 
-    Route::get('/usuario',          [User::class, 'list'])  ->name('user.list');
-    Route::get('/usuario/cadastro', [User::class, 'create'])->name('user.create');
-    Route::post('/usuario',         [User::class, 'store']) ->name('user.store');
+    Route::get('/usuario',          [User::class, 'list'])   ->name('user.list');
+    Route::get('/usuario/cadastro', [User::class, 'create']) ->name('user.create');
+    Route::post('/usuario',         [User::class, 'store'])  ->name('user.store');
     Route::delete('/usuario/{id}',  [User::class, 'delete']) ->name('user.delete');
     Route::put('/usuario/{id}',     [User::class, 'update']) ->name('user.update');
 });

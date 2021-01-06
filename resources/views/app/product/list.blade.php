@@ -89,7 +89,7 @@
 
                     <input type="hidden" name="product_id" v-bind:value="product.id">
             
-                    <div class="">
+                    <div>
             
                         <div class="col col-12 bg-white p-5 rounded-2 shadow-2 mx-auto">
             
@@ -132,9 +132,7 @@
                 </form>
             </div>
             <div class="modal-footer">
-                <button v-on:click="clear" type="button" class="btn btn-secondary" data-mdb-dismiss="modal">
-                        Cancelar
-                </button>
+                <button v-on:click="clear" type="button" class="btn btn-secondary" data-mdb-dismiss="modal">Cancelar</button>
             </div>
             </div>
         </div>
@@ -157,14 +155,14 @@
                         return {
                             
                             product: {
-                                id: n,
+                                id: 0,
                                 name: null,
                                 description: null,
                                 price: null,
                                 stock: null,
                                 category: null
                             },
-                            url: '{{ route("app.product.update") }}' + this.product.id
+                            url: '{{ route("app.product.update") }}'
                         }
                     },
 
