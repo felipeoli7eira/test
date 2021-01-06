@@ -34,7 +34,7 @@ Route::prefix('app')->name('app.')->group(function()
     Route::get('/produto/cadastro', [Product::class, 'create']) ->name('product.create');
     Route::post('/produto',         [Product::class, 'store'])  ->name('product.store');
     Route::delete('/produto/{id}',  [Product::class, 'delete']) ->name('product.delete');
-    Route::put('/produto/update',          [Product::class, 'update']) ->name('product.update');
+    Route::put('/produto/update',   [Product::class, 'update']) ->name('product.update');
 
 
 
