@@ -11,7 +11,8 @@ class Product extends Controller
 {
     public function list()
     {
-        return view('app.product.list');
+        $products = ProductModel::all();
+        return view('app.product.list', ['products' => $products]);
     }
 
     public function create()

@@ -29,6 +29,32 @@
             <div class="alert alert-danger fw-500">{{ session('error') }}</div>
         @endif
 
+        @if (count($products))
+            <div class="row">
+                @foreach ($products as $product)
+                <div class="col col-12 col-sm-4">
+                    <div class="card">
+                        <img
+                        src="{{ asset("{$product->photo}") }}"
+                        class="card-img-top"
+                        alt="..."
+                        />
+                        <div class="card-body">
+                        <h5 class="card-title">{{ $product->title }}</h5>
+                        <p class="card-text">
+                            {{ $product->description }}
+                        </p>
+                        <a href="#!" class="btn btn-danger">deletar</a>
+                        <a href="#!" class="btn btn-primary">editar</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            </div>
+        @else
+            <p>Nenhum produto</p>
+        @endif
+
     </div>
 
 @endsection
