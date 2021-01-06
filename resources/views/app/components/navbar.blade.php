@@ -14,36 +14,12 @@
                     <a class="nav-link" href="{{ route('app.category.list') }}">categoria</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="productDropDown"
-                    role="button"
-                    data-mdb-toggle="dropdown"
-                    aria-expanded="false">produtos
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="productDropDown">
-                        <li><a class="dropdown-item fw-500" href="#">listagem</a></li>
-                        <li><a class="dropdown-item fw-500" href="#">cadastro</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('app.product.list') }}">produto</a>
                 </li>
 
-                <li class="nav-item dropdown">
-                    <a
-                    class="nav-link dropdown-toggle"
-                    href="#"
-                    id="userDropDown"
-                    role="button"
-                    data-mdb-toggle="dropdown"
-                    aria-expanded="false">usuários
-                    </a>
-
-                    <ul class="dropdown-menu" aria-labelledby="userDropDown">
-                        <li><a class="dropdown-item fw-500" href="#">listagem</a></li>
-                        <li><a class="dropdown-item fw-500" href="#">cadastro</a></li>
-                    </ul>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('app.product.list') }}">usuários</a>
                 </li>
             </ul>
         </div>

@@ -10,11 +10,11 @@ use App\Models\Category as CategoryModel;
 
 class Category extends Controller
 {
-    public function create()
+    public function list()
     {
         $categories = CategoryModel::all();
 
-        return view('app.category.create', ['categories' => $categories]);
+        return view('app.category.list', ['categories' => $categories]);
     }
 
     public function store(Request $request)
@@ -34,7 +34,6 @@ class Category extends Controller
         $category->slug = Str::slug(
             $request->input('name')
         );
-
 
         if ($category->save())
         {

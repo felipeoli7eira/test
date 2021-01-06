@@ -1,13 +1,13 @@
 @extends('template')
 
-@section('title', 'Laravel | Login')
+@section('title', 'Laravel | Categorias')
 
 @section('css')
 @endsection
 
 @section('content')
 
-    @component('app.components.navbar', ['current' => 'category.create'])
+    @component('app.components.navbar')
     @endcomponent
 
     <div class="container mt-5 pt-5">
