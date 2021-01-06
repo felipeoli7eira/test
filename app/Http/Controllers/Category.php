@@ -44,4 +44,20 @@ class Category extends Controller
             return Redirect::route('app.category.list')->with('error', 'Falha ao cadastrar');
         }
     }
+
+    public function update(Request $request)
+    {
+        $category = CategoryModel::findOrFail(
+            $request->input('id')
+        );
+
+        $category->name = $request->input('name');
+        $category->slug = Str::slug(
+            $request->input('name')
+        );
+
+        $category->save();
+
+        return Redirect::route('app.category.list');
+    }
 }

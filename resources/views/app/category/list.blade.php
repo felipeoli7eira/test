@@ -18,14 +18,16 @@
             @endforeach
         @endif
 
-        <form v-show="!formEdit" id="create-form" action="{{ route('app.category.store') }}" method="post" class="row text-end d-flex justify-content-end mb-5">
+        <form id="create-form" v-bind:action="action" method="post" class="row text-end d-flex justify-content-end mb-5">
 
             @csrf
+
+            <input type="hidden" name="category_id" v-bind:value="category.id">
 
             <div class="col col-6">
                 <div class="row">
                     <div class="col p-0">
-                        <input type="text" name="name" class="form-control w-100" placeholder="Nova categoria">
+                        <input type="text" name="name" class="form-control w-100" v-bind:value="category.name" placeholder="Nova categoria">
                     </div>
                     <div class="col text-start">
                         <button type="submit" class="btn btn-primary fw-600 ml-1">cadastrar</button>
@@ -35,32 +37,13 @@
 
         </form>
 
-        <form v-show="formEdit" id="update-form" action="{{ route('app.category.store') }}" method="post" class="row text-end d-flex justify-content-end d-none mb-5">
-
-            @csrf
-            @method('put')
-
-            <input type="hidden" name="category_id" value="">
-
-            <div class="col col-6">
-                <div class="row">
-                    <div class="col p-0">
-                        <input type="text" name="name" class="form-control w-100" placeholder="...">
-                    </div>
-                    <div class="col text-start">
-                        <button type="submit" class="btn btn-secondary fw-600 ml-1">atualizar</button>
-                    </div>
-                </div>
-            </div>
-
-        </form>
-
         @if (count($categories))
             @foreach ($categories as $category)
-                <p v-on:click="setForUpdate({{ $category }})" class="note note-light small rounded-0 fw-500 m-0 mb-2">
+                <p class="note note-light small rounded-0 fw-500 m-0 mb-2">
                     {{ $category->name }} <span class="badge fw-400 rounded-1 bg-secondary">{{ $category->slug }}</span>
                     <br>
-                    <button type="button" class="btn btn-sm btn-dark fw-600 my-3">atualizar</button>
+                    <button v-on:click="update({{ $category }})" type="button" class="btn btn-sm btn-dark fw-600 my-3">atualizar</button>
+                    <button type="button" class="btn btn-sm btn-danger fw-600 my-3">deletar</button>
                 </p>
             @endforeach
         @else
@@ -82,15 +65,20 @@
                 data()
                 {
                     return {
-                        formEdit: false
+                        action: '{{ route("app.category.store") }}',
+                        category: {
+                            id: null,
+                            name: null
+                        }
                     }
                 },
 
                 methods: {
-                    setForUpdate(id)
+                    update(category)
                     {
-                        console.log(id)
-                        this.formEdit = true
+                        this.category.id = category.id
+                        this.category.name = category.name
+                        this.action = '{{ route("app.category.update") }}'
                     }
                 }
             }
