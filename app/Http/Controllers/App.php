@@ -11,6 +11,8 @@ class App extends Controller
 {
     public function index()
     {
+        DB::table('users')->select();
+
         return view('app.index');
     }
 
